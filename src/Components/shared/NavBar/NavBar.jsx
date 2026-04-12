@@ -36,7 +36,8 @@ const NavBar = () => {
 
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <nav className=' shadow-sm bg-base-100   mx-auto'>
+        <div className="navbar container mx-auto ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,6 +62,7 @@ const NavBar = () => {
                 <button className="btn btn-success text-white b-[rgba(89, 198, 210, 1)] ">Signup</button>
             </div>
         </div>
+        </nav>
     );
 };
 
