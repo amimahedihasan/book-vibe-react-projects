@@ -4,10 +4,18 @@ import './index.css'
 import { RouterProvider } from "react-router/dom";
 import { router } from './routs/routs';
 
+import BookCard from './Components/HomePage/UI/BookCard';
+import BookProiveder from './BookContest/BookContest';
+
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <RouterProvider router={router}/>
+   <BookProiveder>
+
+      <RouterProvider router={router} />
+   </BookProiveder>
+
+  
   </StrictMode>,
 )

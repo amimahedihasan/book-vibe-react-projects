@@ -1,25 +1,31 @@
+
+import { BiCollection } from 'react-icons/bi';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../BookContest/BookContest';
+import { useContext } from 'react';
 
 const BookDetails = () => {
-    const { bookId } = useParams(); // রাউটারে :id থাকলে id দিন, অথবা আপনার রাউটের সাথে মিলিয়ে নিন
+    const { bookId } = useParams();
     const books = useLoaderData();
-    
-    const expectedBooks = books.find((book) => book.bookId == bookId);
-    
-    
+    const {handleMarkAsRead} =useContext(BookContext)
 
+    const expectedBooks = books.find((book) => book.bookId == bookId);
+
+
+    
+  
     const { image, yearOfPublishing, bookName, author, review, publisher, category, totalPages, rating, tags } = expectedBooks;
 
     return (
         <div className="container mx-auto my-12 px-4 lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                
+
                 {/* Image Section - Pixel Perfect Alignment */}
                 <div className="bg-gray-100 rounded-2xl p-12 flex items-center justify-center">
                     <img
                         src={image}
                         alt={bookName}
-                        className="h-[560px] w-auto object-contain drop-shadow-2xl" 
+                        className="h-[560px] w-auto object-contain drop-shadow-2xl"
                     />
                 </div>
 
@@ -31,13 +37,13 @@ const BookDetails = () => {
                     <p className="text-xl font-medium text-[#131313CC]">
                         By : {author}
                     </p>
-                    
+
                     <div className="border-y border-[#13131326] py-3 text-xl font-medium text-[#131313CC]">
                         {category}
                     </div>
 
                     <p className="text-[#131313B3] leading-relaxed">
-                        <span className="font-bold text-[#131313]">Review : </span> 
+                        <span className="font-bold text-[#131313]">Review : </span>
                         {review}
                     </p>
 
@@ -46,8 +52,8 @@ const BookDetails = () => {
                         <span className="font-bold text-[#131313]">Tag</span>
                         <div className="flex gap-3">
                             {tags.map((tag, index) => (
-                                <span 
-                                    key={index} 
+                                <span
+                                    key={index}
                                     className="px-4 py-1.5 rounded-full text-sm font-semibold text-[#23BE0A] bg-[#23BE0A0D]"
                                 >
                                     #{tag}
@@ -78,11 +84,12 @@ const BookDetails = () => {
 
                     {/* Action Buttons */}
                     <div className="flex items-center gap-4 pt-6">
-                        <button className="px-7 py-4 border border-[#1313134D] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
-                            Read
+                        <button className=" px-7 py-4 border border-[#1313134D] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors" onClick={() => handleMarkAsRead(expectedBooks)}>
+                            Mark is Read
                         </button>
-                        <button className="px-7 py-4 bg-[#50B1C9] text-white rounded-lg font-bold text-lg hover:bg-[#3e98ad] transition-colors">
-                            Wishlist
+
+                        <button className=" px-7 py-4 bg-[#50B1C9] text-white rounded-lg font-bold text-lg hover:bg-[#3e98ad] transition-colors ">
+                            Add to Wishlist
                         </button>
                     </div>
                 </div>
