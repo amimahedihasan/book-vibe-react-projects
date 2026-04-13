@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const BookCard = ({ books }) => {
     return (
@@ -12,7 +13,7 @@ const BookCard = ({ books }) => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                     {
                         books.map(book => {
-                            return <div key={book.bookId} className="card bg-base-100 shadow-sm">
+                            return <Link to={`/bookDetails/${book.bookId}`} key={book.bookId} className="card bg-base-100 shadow-sm">
                                 <figure className='p-6'>
                                     <img
                                         alt={book.bookName}
@@ -24,8 +25,8 @@ const BookCard = ({ books }) => {
                                     <div className='flex items-center gap-2.5'>
 
                                         {
-                                            book.tags.map((tag) => (
-                                                <div key={book.bookId} className="badge font-bold  text-green-500 bg-green-100">{tag}
+                                            book.tags.map((tag, index) => (
+                                                <div key={index} className="badge font-bold  text-green-500 bg-green-100">{tag}
                                                 </div>
                                             ))}
                                     </div>
@@ -41,7 +42,7 @@ const BookCard = ({ books }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         })
                     }
                 </div>
