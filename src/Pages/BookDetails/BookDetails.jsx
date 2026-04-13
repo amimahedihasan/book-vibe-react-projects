@@ -8,6 +8,7 @@ const BookDetails = () => {
     const { bookId } = useParams();
     const books = useLoaderData();
     const {handleMarkAsRead} =useContext(BookContext)
+    const{handleWishList} = useContext(BookContext)
 
     const expectedBooks = books.find((book) => book.bookId == bookId);
 
@@ -88,7 +89,7 @@ const BookDetails = () => {
                             Mark is Read
                         </button>
 
-                        <button className=" px-7 py-4 bg-[#50B1C9] text-white rounded-lg font-bold text-lg hover:bg-[#3e98ad] transition-colors ">
+                        <button onClick={() => handleWishList(expectedBooks)} className=" px-7 py-4 bg-[#50B1C9] text-white rounded-lg font-bold text-lg hover:bg-[#3e98ad] transition-colors ">
                             Add to Wishlist
                         </button>
                     </div>

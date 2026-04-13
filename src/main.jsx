@@ -6,6 +6,7 @@ import { router } from './routs/routs';
 
 import BookCard from './Components/HomePage/UI/BookCard';
 import BookProiveder from './BookContest/BookContest';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -14,6 +15,8 @@ createRoot(document.getElementById('root')).render(
    <BookProiveder>
 
       <RouterProvider router={router} />
+              <ToastContainer />
+
    </BookProiveder>
 
   
